@@ -16,13 +16,13 @@ The repo is a workspace with three packages under `packages/`. Each is self-cont
 
 ## Packages
 
-### `@cod3x/x402` - Gasless USDC payments
+### `@hyperpay/x402` - Gasless USDC payments
 
 HTTP 402 + EIP-3009. Users sign an off-chain authorization, backend settles it on-chain. Zero gas for the payer.
 
 ```typescript
 // Client: sign a payment
-import { signTransferAuthorization, generateNonce, createValidityWindow } from "@cod3x/x402/client";
+import { signTransferAuthorization, generateNonce, createValidityWindow } from "@hyperpay/x402/client";
 
 const signed = await signTransferAuthorization(signer, {
   from: walletAddress,
@@ -37,7 +37,7 @@ const signed = await signTransferAuthorization(signer, {
 });
 
 // Server: protect any Express route
-import { createX402Middleware, X402PaymentLibrary, DefaultFacilitatorClient } from "@cod3x/x402/server";
+import { createX402Middleware, X402PaymentLibrary, DefaultFacilitatorClient } from "@hyperpay/x402/server";
 
 app.post("/premium", createX402Middleware({
   library: new X402PaymentLibrary(persistence, new DefaultFacilitatorClient()),
@@ -48,14 +48,14 @@ app.post("/premium", createX402Middleware({
 }), handler);
 ```
 
-Includes a React hook (`@cod3x/x402/react`) that wraps wagmi for wallet signing. Works with any signer that implements the `X402Signer` interface.
+Includes a React hook (`@hyperpay/x402/react`) that wraps wagmi for wallet signing. Works with any signer that implements the `X402Signer` interface.
 
-### `@cod3x/cctp-verify` - CCTP settlement verification
+### `@hyperpay/cctp-verify` - CCTP settlement verification
 
 Polls source and destination chains until a CCTP transfer settles. Ships with Hyperliquid and Across verifiers, but the interfaces are generic.
 
 ```typescript
-import { dualPollVerify, HyperliquidSourceVerifier, AcrossDestinationVerifier } from "@cod3x/cctp-verify";
+import { dualPollVerify, HyperliquidSourceVerifier, AcrossDestinationVerifier } from "@hyperpay/cctp-verify";
 
 const result = await dualPollVerify(
   new HyperliquidSourceVerifier({
@@ -73,12 +73,12 @@ const result = await dualPollVerify(
 );
 ```
 
-### `@cod3x/funding-pipeline` - Multi-chain agent funding
+### `@hyperpay/funding-pipeline` - Multi-chain agent funding
 
 State machine that detects USDC deposits across 10 CCTP chains, bridges via burn/attest/mint, buys credits, and deposits to Hyperliquid. Every step is idempotent and persists state, so crashes resume where they left off.
 
 ```typescript
-import { FundingPipeline } from "@cod3x/funding-pipeline";
+import { FundingPipeline } from "@hyperpay/funding-pipeline";
 
 const pipeline = new FundingPipeline({
   balance: usdcBalanceProvider,

@@ -1,5 +1,5 @@
 {
-  "name": "@cod3x/x402",
+  "name": "@hyperpay/x402",
   "version": "1.0.0",
   "private": true,
   "description": "X402 Payment Protocol — HTTP 402 + EIP-3009 gasless USDC payments",

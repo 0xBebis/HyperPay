@@ -1,5 +1,5 @@
 {
-  "name": "@cod3x/funding-pipeline",
+  "name": "@hyperpay/funding-pipeline",
   "version": "1.0.0",
   "private": true,
   "description": "CCTP-native multi-chain agent funding — USDC deposit detection, Circle CCTP bridging, and settlement",

@@ -1,5 +1,5 @@
 {
-  "name": "@cod3x/cctp-verify",
+  "name": "@hyperpay/cctp-verify",
   "version": "1.0.0",
   "private": true,
   "description": "CCTP settlement verification — dual-poll pattern with pluggable source/destination verifiers",
