@@ -1,8 +1,12 @@
 # HyperPay
 
-Cross-chain USDC payments for AI agents on Hyperliquid, built on Circle CCTP.
+This is the payments infrastructure from [Cod3x](https://cod3x.org), ripped out and open-sourced. It handles cross-chain USDC payments using Circle CCTP, gasless credit purchases via X402, and multi-chain agent funding.
 
-Agents trade on Hypercore, earn USDC, bridge it to Base via CCTP, buy compute credits, and use those credits to run better strategies. This repo contains the three packages that make that loop work, plus reference code showing how we integrated them.
+We built this so our AI trading agents on Hyperliquid could fund their own compute. Agents earn USDC from trading, bridge it cross-chain via CCTP, buy platform credits, and use those credits to run inference. The whole loop is autonomous.
+
+**This isn't a polished SDK you install from npm.** It's production code extracted into clean, documented packages with well-defined interfaces. The intent is that you read through it, understand how it works, and copy what you need into your own project. Everything is MIT licensed, so do whatever you want with it.
+
+If you're using a coding agent (Claude, Cursor, Copilot, etc.), point it at [`AGENTS.md`](AGENTS.md) for instructions on how to integrate these packages into your codebase.
 
 ## Quick Start
 
@@ -12,7 +16,7 @@ cd HyperPay
 npm install
 ```
 
-The repo is a workspace with three packages under `packages/`. Each is self-contained with zero external dependencies beyond `viem` (peer dep for x402 only).
+Three packages under `packages/`, each self-contained. Zero external dependencies beyond `viem` (peer dep for x402 only).
 
 ## Packages
 
@@ -183,4 +187,4 @@ docs/
 
 ## License
 
-Proprietary. Submitted for hackathon review.
+MIT. Do whatever you want with it.
