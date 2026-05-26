@@ -1,0 +1,14 @@
+{
+  "name": "@cod3x/funding-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CCTP-native multi-chain agent funding — USDC deposit detection, Circle CCTP bridging, and settlement",
+  "exports": {
+    ".": "./src/index.ts",
+    "./steps": "./src/steps/index.ts",
+    "./utils": "./src/utils/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

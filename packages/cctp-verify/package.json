@@ -1,0 +1,15 @@
+{
+  "name": "@cod3x/cctp-verify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CCTP settlement verification — dual-poll pattern with pluggable source/destination verifiers",
+  "exports": {
+    ".": "./src/index.ts",
+    "./verifiers": "./src/verifiers/index.ts",
+    "./verifiers/hyperliquid": "./src/verifiers/hyperliquid.ts",
+    "./verifiers/across": "./src/verifiers/across.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

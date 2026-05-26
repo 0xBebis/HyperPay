@@ -1,0 +1,16 @@
+{
+  "name": "cctp-bridge-toolkit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cross-chain payment infrastructure: X402 gasless payments, CCTP settlement verification, and multi-chain funding pipelines",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "typecheck": "tsc --noEmit --project packages/x402/tsconfig.json && tsc --noEmit --project packages/cctp-verify/tsconfig.json && tsc --noEmit --project packages/funding-pipeline/tsconfig.json"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

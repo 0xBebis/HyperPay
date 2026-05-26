@@ -1,0 +1,32 @@
+{
+  "name": "@cod3x/x402",
+  "version": "1.0.0",
+  "private": true,
+  "description": "X402 Payment Protocol — HTTP 402 + EIP-3009 gasless USDC payments",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types/index.ts",
+    "./client": "./src/client/index.ts",
+    "./client/signing": "./src/client/signing.ts",
+    "./client/payload": "./src/client/payload.ts",
+    "./client/balance": "./src/client/balance.ts",
+    "./server": "./src/server/index.ts",
+    "./server/middleware": "./src/server/middleware.ts",
+    "./server/library": "./src/server/library.ts",
+    "./server/facilitator": "./src/server/facilitator.ts",
+    "./server/interfaces": "./src/server/interfaces.ts",
+    "./react": "./src/react/index.ts"
+  },
+  "peerDependencies": {
+    "viem": ">=2",
+    "react": ">=18",
+    "wagmi": ">=1"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "wagmi": { "optional": true }
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}
