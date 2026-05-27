@@ -119,7 +119,7 @@ Agent earns USDC on Hypercore
        |
   Circle attestation (~60-90s)
        |
-  CCTP mint on Base
+  CCTP mint on Arc (Base until Arc mainnet)
        |
   X402 credit purchase (gasless, EIP-3009)
        |
@@ -128,7 +128,7 @@ Agent earns USDC on Hypercore
   Better strategies -> more USDC -> repeat
 ```
 
-The funding pipeline automates this entire loop. The X402 package handles the credit purchase step. The cctp-verify package confirms settlement.
+The funding pipeline automates this entire loop. The X402 package handles the credit purchase step. The cctp-verify package confirms settlement. Currently settles on Base; switches to Arc when it launches (config change only, see [Arc Settlement](#arc-settlement)).
 
 ## Supported Chains
 
@@ -143,7 +143,10 @@ The funding pipeline automates this entire loop. The X402 package handles the cr
 | Base | 6 | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` |
 | Polygon PoS | 7 | `0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359` |
 | Sui | 8 | `0xdba346...::usdc::USDC` |
+| **Arc** | **26** | **TBD (not yet on mainnet)** |
 | Hypercore | -1 | Internal (via HL exchange API) |
+
+Arc (domain 26) is our target settlement chain. Currently using Base (domain 6) as a stand-in until Arc mainnet launches. See [Arc Settlement](#arc-settlement).
 
 Contract addresses for TokenMessenger and MessageTransmitter are in [`packages/funding-pipeline/src/types.ts`](packages/funding-pipeline/src/types.ts).
 

@@ -169,7 +169,7 @@
 
 ```
 Source Chain                Circle Iris API          Destination Chain
-(e.g. Ethereum)            (Attestation)            (e.g. Arbitrum)
+(e.g. Hypercore)           (Attestation)            (Arc, or Base until mainnet)
       │                          │                        │
       │                          │                        │
       │ 1. depositForBurn()      │                        │
@@ -206,6 +206,10 @@ For Hypercore (Hyperliquid):
   Step 1 is replaced by sendToEvmWithData()
   Steps 2-4 are handled by HL's bridge infrastructure
   Settlement verified via Across Protocol indexer
+
+Note: Currently settling on Base (domain 6). When Arc launches
+on mainnet, the destination switches to Arc (domain 26). The
+CCTP flow is identical, only the domain ID changes.
 ```
 
 ## X402 Gasless Payment — Sequence Diagram

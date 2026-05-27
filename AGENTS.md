@@ -157,6 +157,8 @@ If you're trying to understand the architecture:
 
 ## Common modifications
 
+**Switch settlement to Arc:** The billing controller already has Arc's CCTP domain (26) configured. When Arc launches on mainnet, update `CCTP_CONFIG` in the billing controller to `{ destinationChainId: 26, evmChainId: <arc_chain_id> }` and add Arc to `NETWORK_REGISTRY` in `packages/x402/src/types/network.ts`. Currently settling on Base (domain 6) as a stand-in.
+
 **Change the target chain:** Edit `targetChainId` in `FundingConfig`. Default is `"42161"` (Arbitrum).
 
 **Change credit pricing:** Edit `creditsUsdcCost` and `creditsAmount` in `FundingConfig`.
