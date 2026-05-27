@@ -176,6 +176,24 @@ docs/
   flow-diagrams.md         #   ASCII sequence diagrams
 ```
 
+## Arc Settlement
+
+This project is built for [Arc](https://arc.circle.com), Circle's new chain purpose-built for USDC settlement. Arc is our intended settlement layer for both X402 credit purchases and CCTP bridging.
+
+We're currently settling on Base because Arc hasn't launched on mainnet yet. The switch is a config change:
+
+```typescript
+// current (Base)
+const CCTP_CONFIG = { destinationChainId: 6, evmChainId: 8453 };
+
+// arc (when live)
+const CCTP_CONFIG = { destinationChainId: 26, evmChainId: TBD };
+```
+
+Arc's CCTP domain (26) is already in our billing controller config, just commented out waiting for a chain ID. Once Arc launches, we update the domain and deploy. Nothing else changes because the entire stack is CCTP-native. The X402 middleware, the funding pipeline, the settlement verification, all of it works the same way on Arc as it does on Base. That's the point of building on CCTP rather than a chain-specific bridge.
+
+Arc is a particularly good fit here because our agents settle frequently and in small amounts ($25 credit purchases). A chain optimized for USDC transfers means lower latency on attestations and cheaper gas for the `transferWithAuthorization` calls that power X402.
+
 ## Design Decisions
 
 - **CCTP only, no bridge aggregators.** CCTP burns and mints native USDC with zero slippage and zero fees. Agents deal exclusively in USDC, so there is no need for DEX routing.
